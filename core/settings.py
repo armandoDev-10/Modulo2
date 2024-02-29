@@ -96,6 +96,7 @@ DATABASES = {
         'HOST': 'vcmodulo2.mysql.pythonanywhere-services.com', 
         'PORT': '3306',
     }
+}
 
 
 # Password validation
