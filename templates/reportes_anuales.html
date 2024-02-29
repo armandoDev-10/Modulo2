@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Reportes Anuales{% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar.html' %}
+
+<section class="tabla col-md-6 m-auto p-5 text-center">
+    <h1>Reporte</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <th>Año</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for reporte in reportes %}
+            <tr>
+                <td>
+                    {{reporte.año}}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'Reporte_anual' reporte.id %}">Ver</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

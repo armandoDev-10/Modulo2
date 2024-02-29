@@ -1,0 +1,149 @@
+{% extends 'base_reporte.html' %}
+
+{% block title %} Reporte Mensual{% endblock %}
+
+{% block content %}
+
+<section class="tabla col-md-6 m-auto text-center">
+    <h1>Reporte de {{reporte}}</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                No. de pagos
+            </th>
+            <th>
+                Aportación del mes
+            </th>
+            <th>
+                Ingresos
+            </th>
+        </thead>
+        <tbody>
+            <th>
+                {{no_pagos}}
+            </th>
+            <th>
+                $ {{aportacion}}
+            </th>
+            <th>
+                $ {{ingresos}}
+            </th>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                Gastos Fijos
+            </th>
+            <th>
+                Gastos Variables
+            </th>
+            <th>
+                Total de Gastos
+            </th>
+        </thead>
+        <tbody>
+            <th>
+                $ {{gastos_fijos}}
+            </th>
+            <th>
+                $ {{gastos_variables}}
+            </th>
+            <th>
+                $ {{gastos}}
+            </th>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                Remanente del mes
+            </th>
+            
+        </thead>
+        <tbody>
+            <th>
+                $ {{remanente}}
+            </th>
+            
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h5>Listado de pagos y adeudos del mes</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Edificio</th>
+            <th>Departamento</th>
+            <th>Pagado / Con adeudo</th>
+        </thead>
+        <tbody>
+            {% for pago in pagos %}
+            <tr>
+                <td>
+                    {{pago.edificio}}
+                </td>
+                <td>
+                    {{pago.departamento}}
+                </td>
+                <td>
+                    {{pago.status}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <h5>Listado de gastos fijos del mes</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Concepto</th>
+            <th>Mes</th>
+            <th>Cantidad</th>
+        </thead>
+        <tbody>
+            {% for gasto in gastos_fijos_list %}
+            <tr>
+                <td>
+                    {{gasto.concepto}}
+                </td>
+                <td>
+                    {{gasto.mes}}
+                </td>
+                <th>
+                    $ {{gasto.cantidad}}
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h5>Listado de gastos variables del mes</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Concepto</th>
+            <th>Mes</th>
+            <th>Cantidad</th>
+        </thead>
+        <tbody>
+            {% for gasto in gastos_variables_list %}
+            <tr>
+                <td>
+                    {{gasto.concepto}}
+                </td>
+                <td>
+                    {{gasto.mes}}
+                </td>
+                <th>
+                    $ {{gasto.cantidad}}
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

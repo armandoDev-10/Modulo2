@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Reportes {% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar.html' %}
+
+<section class="tabla col-md-6 m-auto p-5 text-center">
+    <h1>Reportes</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <th>Tipo de reporte</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="{% url 'Mensuales' %}">Mensual</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{% url 'Anuales' %}">Anual</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+{% endblock %}

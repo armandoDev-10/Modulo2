@@ -1,0 +1,223 @@
+{% extends 'base_reporte.html' %}
+
+{% block title %} Reporte Anual{% endblock %}
+
+{% block content %}
+
+<section class="tabla col-md-6 m-auto text-center">
+    <h1>Reporte del {{año}}</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                No. de pagos
+            </th>
+            <th>
+                Cuotas recuperadas
+            </th>
+            <th>
+                Total de Ingresos
+            </th>
+        </thead>
+        <tbody>
+            <th>
+                {{no_pagos}}
+            </th>
+            <th>
+                $ {{cuotas_recuperadas}}
+            </th>
+            <th>
+                $ {{ingresos}}
+            </th>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                Gastos Fijos
+            </th>
+            <th>
+                Gastos Variables
+            </th>
+            <th>
+                Total de Gastos
+            </th>
+        </thead>
+        <tbody>
+            <th>
+                $ {{gastos_fijos}}
+            </th>
+            <th>
+                $ {{gastos_variables}}
+            </th>
+            <th>
+                $ {{gastos}}
+            </th>
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                Remanente anterior
+            </th>
+            <th>
+                Remanente anual
+            </th>
+            <th>
+                Remanente global
+            </th>
+        </thead>
+        <tbody>
+            <th>
+                $ {{remanente_anterior}}
+            </th>
+            <th>
+                $ {{remanente}}
+            </th>
+            <th>
+                $ {{remanente_global}}
+            </th>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h5>Listado de pagos y adeudos del Año</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Edificio</th>
+            <th>Departamento</th>
+            <th>Mes</th>
+            <th>Pagado / Con adeudo</th>
+        </thead>
+        <tbody>
+            {% for pago in pagos %}
+            <tr>
+                <td>
+                    {{pago.edificio}}
+                </td>
+                <td>
+                    {{pago.departamento}}
+                </td>
+                <td>
+                    {{pago.mes}}
+                </td>
+                <td>
+                    {{pago.status}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <h5>Listado de gastos fijos del Año</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Concepto</th>
+            <th>Mes</th>
+            <th>Cantidad</th>
+        </thead>
+        <tbody>
+            {% for gasto in gastos_fijos_list %}
+            <tr>
+                <td>
+                    {{gasto.concepto}}
+                </td>
+                <td>
+                    {{gasto.mes}}
+                </td>
+                <th>
+                    $ {{gasto.cantidad}}
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h5>Listado de gastos variables del Año</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Concepto</th>
+            <th>Mes</th>
+            <th>Cantidad</th>
+        </thead>
+        <tbody>
+            {% for gasto in gastos_variables_list %}
+            <tr>
+                <td>
+                    {{gasto.concepto}}
+                </td>
+                <td>
+                    {{gasto.mes}}
+                </td>
+                <th>
+                    $ {{gasto.cantidad}}
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    {% if cuotas_recuperadas_list %}
+        <h5>Listado de cuotas recuperadas del Año</h5>
+        <table class="table table-striped">
+            <thead>
+                <th>Edificio</th>
+                <th>Departamento</th>
+                <th>Concepto</th>
+                <th>Mes</th>
+            </thead>
+            <tbody>
+                {% for cuota in cuotas_recuperadas_list %}
+                <tr>
+                    <td>
+                        {{cuota.edificio}}
+                    </td>
+                    <td>
+                        {{cuota.departamento}}
+                    </td>
+                    <td>
+                        {{cuota.concepto}}
+                    </td>
+                    <td>
+                        {{cuota.mes}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <h5>Listado de deudores del Año</h5>
+    <table class="table table-striped">
+        <thead>
+            <th>Edificio</th>
+            <th>Departamento</th>
+            <th>Mes</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for deudor in deudores %}
+            <tr>
+                <td>
+                    {{deudor.edificio}}
+                </td>
+                <td>
+                    {{deudor.departamento}}
+                </td>
+                <td>
+                    {{deudor.mes}}
+                </td>
+                <td>
+                    {{deudor.status}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
