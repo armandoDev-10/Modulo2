@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '*', 
-        'USER': '*',
-        'PASSWORD': '*',
-        'HOST': '*', 
-        'PORT': '*',
+        'NAME': 'vcmodulo2$default', 
+        'USER': 'vcmodulo2',
+        'PASSWORD': 'Adminmod2',
+        'HOST': 'vcmodulo2.mysql.pythonanywhere-services.com', 
+        'PORT': '3306',
     }
 
 
